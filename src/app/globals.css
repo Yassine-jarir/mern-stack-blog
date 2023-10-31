@@ -1,27 +1,60 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+ /* --bg: #f6f6f6, */
+ --bg: black,
+ --textColor: black,
+ --softBg:#f0f0f0,
+ --softTextColor:#626262
+}
+ 
+* {
+margin: 0;
+padding: 0;
+box-sizing: 0;
+}
+body{
+max-width: 100vw;
+overflow: hidden;
+}
+a{
+  /* take color from parent */
+  color: inherit; 
+  text-decoration: none;
+}
+/* container for apply theme */
+.container{
+  min-height: 100vh;
+  background-color: var(--bg);
+  
+  color: var(--textColor);
+}
+/* wrapper for responsive */
+.wrapper{
+  max-width: 1536px;
+  margin-right: auto;
+  margin-left: auto;
+  /* background-color: darkblue; */
+  padding: 0 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@media screen and (max-width: 1536px) {
+  .wrapper{
+    max-width: 1366px;
   }
 }
+@media screen and (max-width: 1366px) {
+  .wrapper{
+    max-width: 1024px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .wrapper{
+    max-width: 768px;
+    
+  }
+}
+@media screen and (max-width: 768px) {
+  .wrapper{
+    max-width: 457px;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  }
 }
