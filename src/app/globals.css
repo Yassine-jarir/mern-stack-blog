@@ -1,11 +1,20 @@
 :root {
- /* --bg: #f6f6f6, */
+ 
  --bg: black,
  --textColor: black,
- --softBg:#f0f0f0,
- --softTextColor:#626262
+ --softBg: #f0f0f0,
+ --softTextColor: #626262
 }
- 
+.dark{
+  background-color: black;
+  color: white;
+  transition: all 0.3s;
+}
+.light{
+  background-color: #f6f6f6;
+  color: black;
+  transition: all 0.3s;
+}
 * {
 margin: 0;
 padding: 0;

@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.social {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+.logo {
+  display: flex;
+  flex: 2;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .social {
+    display: none;
+  }
+  .links {
+    gap: 4px;
+    font-size: 13px;
+  }
+}
