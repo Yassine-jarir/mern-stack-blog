@@ -20,11 +20,11 @@ function NavBar() {
       <div className={styles.logo}> BLOG</div>
       <div className={styles.links}>
         <ThemeToggle />
-        <>
+        <div className={styles.hiddenLinks}>
           <Link href="/">Home</Link>
           <Link href="/Contact">Contact</Link>
           <Link href="/about">About</Link>
-        </>
+        </div>
         <AuthLinks />
       </div>
     </div>

@@ -18,7 +18,7 @@ const initialValue = (state, action) => {
 
 export const ThemeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(initialValue, {
-    theme: "dark",
+    theme: "light",
   });
 
   return (

@@ -22,14 +22,29 @@
   gap: 20px;
   flex: 1;
   font-size: 15px;
+  align-items: center;
 }
 
+.hiddenLinks {
+  display: flex;
+  gap: 10px;
+}
 @media screen and (max-width: 768px) {
   .social {
     display: none;
   }
   .links {
-    gap: 4px;
+    gap: 25px;
     font-size: 13px;
+    flex: 0;
+  }
+  .hiddenLinks {
+    display: none;
+  }
+  .logo {
+    flex: 0;
+  }
+  .container {
+    justify-content: space-between;
   }
 }
