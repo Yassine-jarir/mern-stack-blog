@@ -4,6 +4,7 @@ import styles from "./write.module.css";
 import "react-quill/dist/quill.bubble.css";
 import ReactQuill from "react-quill";
 import Image from "next/image";
+import plus from "../../public/plus.png";
 
 function Write() {
   const [open, setOpen] = useState(false);
@@ -11,17 +12,10 @@ function Write() {
   return (
     <div className={styles.container}>
       <input type="text" placeholder="Title" className={styles.input} />
-      <select className={styles.select}>
-        <option value="style">style</option>
-        <option value="fashion">fashion</option>
-        <option value="food">food</option>
-        <option value="culture">culture</option>
-        <option value="travel">travel</option>
-        <option value="coding">coding</option>
-      </select>
+
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(true)}>
-          <Image src="/plus.png" alt="" width={16} height={16} />
+          <Image src={plus} alt="" width={16} height={16} />
         </button>
         {open && (
           <div className={styles.add}>
