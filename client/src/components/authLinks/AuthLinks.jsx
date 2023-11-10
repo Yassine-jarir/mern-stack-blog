@@ -25,8 +25,9 @@ function AuthLinks() {
       ) : (
         <>
           <Link href="/write">New Blog</Link>
-          <button onClick={handlelogout} className={styles.logout}>
+          <button onClick={handlelogout} className="btn btn-dark">
             Logout
+          
           </button>
         </>
       )}

@@ -6,7 +6,9 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import Providers from "@/providers/ThemeProvider";
 import { UserProvider } from "@/context/AuthContext";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Suspense } from "react";
+import Loading from "./loading";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +28,7 @@ export default function RootLayout({ children }) {
                 <div className="wrapper">
                   <NavBar />
                   <ToastContainer />
-                  {children}
+                  <Suspense fallback={<Loading />}>{children}</Suspense>
                   <Footer />
                 </div>
               </div>

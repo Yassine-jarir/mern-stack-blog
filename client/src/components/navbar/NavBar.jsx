@@ -17,7 +17,10 @@ function NavBar() {
         <Image src={youtube} alt="youtube" width={24} height={24} />
         <Image src={instagram} alt="tiktok" width={24} height={24} />
       </div>
-      <div className={styles.logo}> BLOG</div>
+      <Link href="/" className={styles.logo}>
+        {" "}
+        BLOG
+      </Link>
       <div className={styles.links}>
         <ThemeToggle />
         <div className={styles.hiddenLinks}>

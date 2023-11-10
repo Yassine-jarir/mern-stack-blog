@@ -1,7 +1,9 @@
 import React from "react";
 
 function Pagination() {
-  return <div>suivant</div>;
+  const handlePageClick = (event) => {};
+
+  return <div> </div>;
 }
 
 export default Pagination;

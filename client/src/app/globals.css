@@ -21,6 +21,19 @@
   color: black;
   transition: all 0.3s;
 }
+a{
+ 
+}
+.dark a{
+  color:white;
+  text-decoration:none;
+  font-weight: 400;
+}
+.light a{
+  color: black;
+  text-decoration:none;
+  font-weight: 400;
+}
 * {
 margin: 0;
 padding: 0;

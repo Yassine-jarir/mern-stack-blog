@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Suspense, useContext } from "react";
 import styles from "./card.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
 function Card({ blogs }) {
-  const { title, image, description, createdAt } = blogs;
+  const { title, image, description, createdAt, author, _id } = blogs;
 
   return (
-    <div className={styles.container}>
+    <Link href={`/posts/${_id}`} className={styles.container}>
       <div className={styles.imageContainer}>
         <Image
           src={`http://localhost:3001/${image}`}
@@ -17,18 +17,19 @@ function Card({ blogs }) {
         />
       </div>
       <div className={styles.textContainer}>
+        <span>
+          CREATED BY : <strong>{author && author}</strong>
+        </span>
         <div className={styles.detail}>
           <span className={styles.date}>{createdAt} </span>
           <span className={styles.category}>CUL TIME</span>
         </div>
-        <Link href="/">
-          <h2>{title}</h2>
-        </Link>
+        <h2>{title}</h2>
         <div dangerouslySetInnerHTML={{ __html: description }} />
 
         <Link href="/">Read More</Link>
       </div>
-    </div>
+    </Link>
   );
 }
 

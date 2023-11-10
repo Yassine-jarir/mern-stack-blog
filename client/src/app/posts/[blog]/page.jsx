@@ -1,56 +1,62 @@
-import React from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./singlepage.module.css";
 import Image from "next/image";
-import p1 from "../../public/p1.jpeg";
 import Menu from "@/components/Menu/Menu";
 import Comments from "@/components/comments/Comments";
+import img from "../../../public/coding.png";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import { UserContext } from "@/context/AuthContext";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
 
 function page() {
+  const { blog } = useParams();
+  const { user } = useContext(UserContext);
+
+  const [singleblog, setblog] = useState();
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `http://localhost:3001/blog/blog/${blog}`,
+      headers: { Authorization: `Bearer ${user?.token}` },
+    })
+      .then((response) => {
+        setblog(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
-      <div className={styles.infoContainer}>
-        <div className={styles.textContainer}>
-          <h1>Lorem ipsum dolor sit amet.</h1>
-          <div className={styles.user}>
-            <div className={styles.userImageContainer}>
-              <Image src={p1} fill className={styles.avatar} />
-            </div>
-            <div className={styles.userTextContainer}>
-              <span className={styles.username}>Yassine Jarir</span>
-              <span className={styles.date}>11.22.33</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.imageContainer}>
-          <Image src={p1} fill className={styles.image} />
-        </div>
+      <h1>{singleblog?.title}</h1>
+
+      <span className={styles.date}>{singleblog?.createdAt}</span>
+
+      <div className={styles.author}>
+        <span className={styles.user}>Created by :</span>{" "}
+        <strong>@{singleblog?.author}</strong>
       </div>
-      <div className={styles.content}>
-        <div className={styles.post}>
-          <div className={styles.description}>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-              aliquam blanditiis fugiat. Veniam velit atque repellendus vero
-              ipsum ab temporibus.
-            </p>
-            <h4>Lorem ipsum dolor sit amet.</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-              aliquam blanditiis fugiat. Veniam velit atque repellendus vero
-              ipsum ab temporibus.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-              aliquam blanditiis fugiat. Veniam velit atque repellendus vero
-              ipsum ab temporibus.
-            </p>
-          </div>
-          <div className={styles.comment}>
-            <Comments />
-          </div>
+      {user?.user.username == singleblog?.author ? (
+        <div>
+          <Link href={`/edit/${singleblog?._id}`} className="btn btn-primary">
+            Edit blog
+          </Link>
         </div>
-        <Menu />
+      ) : (
+        <div>hello</div>
+      )}
+      <div className={styles.imgContainer}>
+        <Image
+          src={`http://localhost:3001/${singleblog?.image}`}
+          fill
+          className={styles.img}
+        />
       </div>
+      <div dangerouslySetInnerHTML={{ __html: singleblog?.description }} />
     </div>
   );
 }
