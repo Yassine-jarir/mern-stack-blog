@@ -15,7 +15,7 @@ function Signup() {
     e.preventDefault();
     if (passwordsMatch) {
       axios
-        .post("http://localhost:3001/user/signup", {
+        .post("https://mern-stack-blog1.vercel.app/user/signup", {
           username: username,
           password: password,
         })

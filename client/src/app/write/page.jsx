@@ -53,7 +53,7 @@ function Write() {
 
     axios({
       method: "POST",
-      url: "http://localhost:3001/blog/write",
+      url: "https://mern-stack-blog1.vercel.app/blog/write",
       data: formData,
       headers: { authorization: `Bearer ${user?.token}` },
     })

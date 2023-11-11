@@ -19,7 +19,7 @@ function page() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://localhost:3001/blog/blog/${blog}`,
+      url: `https://mern-stack-blog1.vercel.app/blog/blog/${blog}`,
       headers: { Authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {
@@ -54,7 +54,7 @@ function page() {
       )}
       <div className={styles.imgContainer}>
         <Image
-          src={`http://localhost:3001/${singleblog?.image}`}
+          src={`https://mern-stack-blog1.vercel.app/${singleblog?.image}`}
           fill
           className={styles.img}
         />

@@ -32,7 +32,7 @@ function CardList() {
   const getallblogs = () => {
     axios({
       method: "GET",
-      url: `http://localhost:3001/blog/allblogs?page=${currentPage.current}&limits=${limits}`,
+      url: `https://mern-stack-blog1.vercel.app/blog/allblogs?page=${currentPage.current}&limits=${limits}`,
       headers: { Authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {

@@ -7,7 +7,6 @@ import Providers from "@/providers/ThemeProvider";
 import { UserProvider } from "@/context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import { Suspense } from "react";
-import Loading from "./loading";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const inter = Inter({ subsets: ["latin"] });

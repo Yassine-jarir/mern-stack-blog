@@ -47,7 +47,7 @@ function Edit() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://localhost:3001/blog/blog/${blog}`,
+      url: `https://mern-stack-blog1.vercel.app/blog/blog/${blog}`,
       headers: { authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {

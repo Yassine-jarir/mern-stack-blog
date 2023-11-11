@@ -10,7 +10,7 @@ function Card({ blogs }) {
     <Link href={`/posts/${_id}`} className={styles.container}>
       <div className={styles.imageContainer}>
         <Image
-          src={`http://localhost:3001/${image}`}
+          src={`https://mern-stack-blog1.vercel.app/${image}`}
           alt="img"
           fill
           className={styles.image}

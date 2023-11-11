@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import moon from "../../public/moon.png";
 import sun from "../../public/sun.png";
 import Image from "next/image";
