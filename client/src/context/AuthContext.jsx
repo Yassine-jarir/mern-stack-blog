@@ -22,15 +22,19 @@ const reducer = (state, action) => {
 };
 
 export const UserProvider = ({ children }) => {
-  const userToken = JSON.parse(localStorage.getItem("userToken"))
-    ? JSON.parse(localStorage.getItem("userToken"))
-    : null;
   const [state, dispatch] = useReducer(reducer, {
-    user: userToken,
+    user: null,
   });
 
-  console.log(state.user);
+  useEffect(() => {
+    // Check if localStorage is available before accessing it
+    const userToken = localStorage.getItem("userToken")
+      ? JSON.parse(localStorage.getItem("userToken"))
+      : null;
 
+    dispatch({ type: "LOGIN", payload: userToken });
+  }, []);
+  console.log(state.user);
   return (
     <UserContext.Provider value={{ ...state, dispatch }}>
       {children}
