@@ -1,13 +1,14 @@
 "use client";
 import React, { useContext, useState } from "react";
 import styles from "./write.module.css";
+import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { UserContext } from "@/context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 function Write() {
   const [description, setdescription] = useState("");
   const [title, settitle] = useState("");
@@ -65,7 +66,7 @@ function Write() {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined,
+
           theme: "colored",
         });
         router.push("/");

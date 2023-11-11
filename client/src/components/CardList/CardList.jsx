@@ -43,7 +43,7 @@ function CardList() {
         setblogs(response.data.result);
       })
       .catch((err) => {
-        console.log(err.response.data.error);
+        console.log(err?.response?.data.error);
       });
   };
 
