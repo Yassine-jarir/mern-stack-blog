@@ -13,8 +13,10 @@ function Write() {
   const [description, setdescription] = useState("");
   const [title, settitle] = useState("");
   const [image, setimage] = useState();
+  const [err, seterr] = useState("");
   const { user } = useContext(UserContext);
   const router = useRouter();
+
   var modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -58,7 +60,6 @@ function Write() {
       headers: { authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {
-        console.log(response);
         toast.success(" blog added successfully", {
           position: "top-right",
           autoClose: 5000,
@@ -72,7 +73,7 @@ function Write() {
         router.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        seterr(err);
       });
   };
 

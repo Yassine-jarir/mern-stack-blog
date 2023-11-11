@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
 
     dispatch({ type: "LOGIN", payload: userToken });
   }, []);
-  console.log(state.user);
+
   return (
     <UserContext.Provider value={{ ...state, dispatch }}>
       {children}

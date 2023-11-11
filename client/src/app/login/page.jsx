@@ -38,7 +38,6 @@ function Login() {
       });
   };
 
-  console.log(user);
   return (
     <div className={styles.loginblock}>
       <h1>Login</h1>

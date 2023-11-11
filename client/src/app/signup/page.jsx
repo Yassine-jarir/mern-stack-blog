@@ -20,7 +20,6 @@ function Signup() {
           password: password,
         })
         .then((response) => {
-          // console.log(response.data);
           router.push("/login");
           toast.success("signup success, Please Login !!", {
             position: "top-right",

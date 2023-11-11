@@ -15,7 +15,6 @@ function ThemeToggle() {
     });
   };
 
-  console.log(theme);
   return (
     <div
       className={styles.container}

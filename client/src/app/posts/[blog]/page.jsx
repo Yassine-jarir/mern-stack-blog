@@ -14,6 +14,7 @@ function page() {
   const { user } = useContext(UserContext);
 
   const [singleblog, setblog] = useState();
+  const [err, seterr] = useState("");
   useEffect(() => {
     axios({
       method: "GET",
@@ -24,7 +25,7 @@ function page() {
         setblog(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        seterr(err);
       });
   }, []);
 

@@ -16,6 +16,7 @@ function Edit() {
   const [image, setimage] = useState();
   const { user } = useContext(UserContext);
   const router = useRouter();
+  const [err, seterr] = useState("");
   var modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -51,12 +52,11 @@ function Edit() {
       headers: { authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {
-        console.log(response);
         settitle(response.data.title);
         setdescription(response.data.description);
       })
       .catch((err) => {
-        console.log(err);
+        seterr(err);
       });
   }, []);
   const handlesubmit = (e) => {
@@ -72,7 +72,7 @@ function Edit() {
       data: formData,
     })
       .then((result) => {
-        console.log(result.data);
+        seterr(result.data);
         toast.success(" blog uploaded successfully!!", {
           position: "top-right",
           autoClose: 5000,
@@ -86,7 +86,7 @@ function Edit() {
         router.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        seterr(err);
       });
   };
 

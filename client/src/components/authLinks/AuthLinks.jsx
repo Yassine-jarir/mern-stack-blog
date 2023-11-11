@@ -9,7 +9,6 @@ function AuthLinks() {
   const [toggle, settoggle] = useState(false);
   const { theme } = useContext(ThemeContext);
   const { user, dispatch } = useContext(UserContext);
-  console.log(user);
   const handlelogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("userToken");

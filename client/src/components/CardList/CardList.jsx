@@ -16,7 +16,7 @@ function CardList() {
   const [pageCount, setpageCount] = useState();
   const currentPage = useRef();
   const { user } = useContext(UserContext);
-
+  const [err, seterr] = useState("");
   useEffect(() => {
     // if (user && user.token) {
     currentPage.current = 1;
@@ -38,12 +38,11 @@ function CardList() {
       .then((response) => {
         // setblogs(response.data);
 
-        console.log(response.data);
         setpageCount(response.data.pageCount);
         setblogs(response.data.result);
       })
       .catch((err) => {
-        console.log(err?.response?.data.error);
+        seterr(err?.response?.data.error);
       });
   };
 
