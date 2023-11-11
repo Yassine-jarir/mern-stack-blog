@@ -1,7 +1,6 @@
 "use client";
 import React, { useContext, useState } from "react";
 import styles from "./write.module.css";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { UserContext } from "@/context/AuthContext";
