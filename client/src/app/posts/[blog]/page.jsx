@@ -2,9 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./singlepage.module.css";
 import Image from "next/image";
-import Menu from "@/components/Menu/Menu";
-import Comments from "@/components/comments/Comments";
-import img from "../../../public/coding.png";
+
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { UserContext } from "@/context/AuthContext";

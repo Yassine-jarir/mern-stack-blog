@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import moon from "../../public/moon.png";
 import sun from "../../public/sun.png";
 import Image from "next/image";
-import styles from "./themToggle.module.css";
+import styles from "./ThemToggle.module.css";
 import { ThemeContext } from "@/context/ThemeContext";
 function ThemeToggle() {
   const { theme, dispatch } = useContext(ThemeContext);
