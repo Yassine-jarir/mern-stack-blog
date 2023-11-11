@@ -27,7 +27,9 @@ function Card({ blogs }) {
         <h2>{title}</h2>
         <div dangerouslySetInnerHTML={{ __html: description }} />
 
-        <Link href="/">Read More</Link>
+        <Link href={`/posts/${_id}`} className="btn btn-outline-primary">
+          Read More
+        </Link>
       </div>
     </Link>
   );

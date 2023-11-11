@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
-import styles from "./edit.module.css";
+import styles from "../../write/write.module.css";
 import { UserContext } from "@/context/AuthContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";

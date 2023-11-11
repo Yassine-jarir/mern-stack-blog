@@ -19,9 +19,17 @@ function Login() {
         password: password,
       })
       .then((response) => {
-        console.log(response.data);
         localStorage.setItem("userToken", JSON.stringify(response.data));
-
+        toast.success("logged in success", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
         dispatch({ type: "LOGIN", payload: response.data });
         router.push("/");
       })

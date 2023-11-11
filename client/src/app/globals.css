@@ -25,15 +25,16 @@ a{
  
 }
 .dark a{
-  color:white;
+  color:white ;
   text-decoration:none;
   font-weight: 400;
 }
 .light a{
-  color: black;
+  color: black ;
   text-decoration:none;
   font-weight: 400;
 }
+
 * {
 margin: 0;
 padding: 0;

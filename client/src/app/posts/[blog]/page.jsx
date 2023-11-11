@@ -42,7 +42,10 @@ function page() {
       </div>
       {user?.user.username == singleblog?.author ? (
         <div>
-          <Link href={`/edit/${singleblog?._id}`} className="btn btn-primary">
+          <Link
+            href={`/edit/${singleblog?._id}`}
+            className="btn btn-outline-dark"
+          >
             Edit blog
           </Link>
         </div>

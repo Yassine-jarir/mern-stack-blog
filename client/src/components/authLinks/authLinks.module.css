@@ -47,11 +47,23 @@
   color: white;
   transition: all 0.4s;
 }
+.signup {
+  color: #000 !important;
+}
+
 @media screen and (min-width: 768px) {
   .burger {
     display: none;
   }
   .menu {
     display: none;
+  }
+  .link-res {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .linkres {
+    display: none !important;
   }
 }

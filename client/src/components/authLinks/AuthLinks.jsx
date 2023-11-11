@@ -20,14 +20,20 @@ function AuthLinks() {
       {!user ? (
         <>
           <Link href="/login">Login</Link>
-          <Link href="/signup">signup</Link>
+          <Link href="/signup" className="btn btn-outline-dark signup">
+            signup
+          </Link>
         </>
       ) : (
         <>
-          <Link href="/write">New Blog</Link>
-          <button onClick={handlelogout} className="btn btn-dark">
+          <Link href="/write" className={styles.linkres}>
+            New Blog
+          </Link>
+          <button
+            onClick={handlelogout}
+            className={`btn btn-dark ${styles.linkres}`}
+          >
             Logout
-          
           </button>
         </>
       )}
@@ -47,8 +53,8 @@ function AuthLinks() {
           }`}
         >
           <Link href="/">Home</Link>
-          <Link href="/Contact">Contact</Link>
-          <Link href="/about">About</Link>
+          <Link href="/write">New Blog</Link>
+          <Link href="/logout">Logout</Link>
         </div>
       )}
     </>

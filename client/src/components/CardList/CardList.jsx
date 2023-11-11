@@ -9,6 +9,7 @@ import { UserContext } from "@/context/AuthContext";
 import ReactPaginate from "react-paginate";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Suspense } from "react";
+import Link from "next/link";
 function CardList() {
   const [blogs, setblogs] = useState([]);
   const [limits, setlimits] = useState(5);
@@ -49,15 +50,24 @@ function CardList() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Post</h1>
-      <Suspense fallback={<Loading />}>
-        <div className={styles.posts}>
-          {blogs &&
-            blogs.map((blog) => {
-              return <Card blogs={blog} />;
-            })}
-        </div>
-      </Suspense>
-
+      {user?.user ? (
+        <Suspense fallback={<Loading />}>
+          <div className={styles.posts}>
+            {blogs &&
+              blogs.map((blog) => {
+                return <Card blogs={blog} />;
+              })}
+          </div>
+        </Suspense>
+      ) : (
+        <Link
+          href="/signup"
+          type="button"
+          className="btn btn-outline-dark flex justify-content-center margin-auto container-fluid mb-5"
+        >
+          Please Signup To Post
+        </Link>
+      )}
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -66,7 +76,7 @@ function CardList() {
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
-        containerClassName="pagination justify-content-center"
+        containerClassName="pagination justify-content-center mt-4"
         pageLinkClassName="page-link"
         pageClassName="page-item"
         activeClassName="active"
