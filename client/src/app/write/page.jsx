@@ -8,7 +8,7 @@ import { UserContext } from "@/context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
-
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 function Write() {
   const [description, setdescription] = useState("");
   const [title, settitle] = useState("");
