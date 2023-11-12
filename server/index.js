@@ -10,9 +10,7 @@ const path = require("path");
 // global middleware
 app.use(express.json());
 app.use(cors());
-app.get("/", (req, res) => {
-  res.json("hello");
-});
+
 //routes
 app.use("/user", userRouter);
 app.use("/blog", blogRoute);
