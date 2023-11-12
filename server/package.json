@@ -8,6 +8,9 @@
     "dev": "nodemon index.js"
   },
   "author": "",
+  "engines": {
+    "node": "18.13.0"
+  },
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
