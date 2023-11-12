@@ -9,7 +9,7 @@ const Authrequire = async (req, res, next) => {
   }
   try {
     const token = authorization.split(" ")[1];
-    const { id } = await jwt.verify(token, process.env.SECRET_KEY);
+    const { id } = await jwt.verify(token, "YASSINEJARIRFULLSTUCKDEVELOPER");
     const _id = id;
 
     const user = await userModel.findOne({ _id }).select("_id");

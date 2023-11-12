@@ -25,9 +25,11 @@ app.use(express.static(path.join(__dirname, "images")));
 
 // connect
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(
+    "mongodb+srv://yassine:yassine@cluster0.4mvd9mo.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen("3001", () => {
       console.log("success");
     });
   })

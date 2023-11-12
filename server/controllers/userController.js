@@ -42,7 +42,7 @@ const login = async (req, res) => {
       return res.status(400).json({ error: "password not valid" });
     }
     // generate a token
-    const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+    const token = jwt.sign({ id: user.id }, "YASSINEJARIRFULLSTUCKDEVELOPER");
     res.status(200).json({ user, token });
   } catch (error) {
     console.log(error);
