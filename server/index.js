@@ -16,6 +16,9 @@ app.use(
     credentials: true,
   })
 );
+app.get("/", (req, res) => {
+  res.json("hello");
+});
 //routes
 app.use("/user", userRouter);
 app.use("/blog", blogRoute);
@@ -29,7 +32,7 @@ mongoose
     "mongodb+srv://yassine:yassine@cluster0.4mvd9mo.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
-    app.listen("3001", () => {
+    app.listen(3001, () => {
       console.log("success");
     });
   })
