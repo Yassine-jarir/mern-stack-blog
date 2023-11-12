@@ -32,7 +32,7 @@ mongoose
     "mongodb+srv://yassine:yassine@cluster0.4mvd9mo.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
-    app.listen(3001, () => {
+    app.listen(3001 || process.env.PORT, () => {
       console.log("success");
     });
   })
