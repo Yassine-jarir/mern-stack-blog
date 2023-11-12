@@ -1,0 +1,17 @@
+# Ignore Node.js related files and folders
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Ignore client-side build artifacts
+/client/.next
+/client/out
+/client/build
+
+# Ignore server-side build artifacts
+/server/build
+/server/dist
+
+# Ignore environment-specific files
+/client/.env.local
+/server/.env
