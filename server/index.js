@@ -9,13 +9,7 @@ const path = require("path");
 
 // global middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://mern-stack-blog-client.vercel.app"],
-    methods: ["POST", "GET", "PATCH"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 //routes
 app.use("/user", userRouter);
