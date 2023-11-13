@@ -51,7 +51,7 @@ function Signup() {
     <div className={styles.loginblock}>
       <h1>Signup</h1>
       <form onSubmit={handlesubmit}>
-        <label htmlFor="Username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           value={username}
