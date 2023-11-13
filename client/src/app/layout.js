@@ -2,13 +2,13 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
-import { ThemeProvider } from "@/context/ThemeContext";
-import Providers from "@/providers/ThemeProvider";
 import { UserProvider } from "@/context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import { Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loading from "./Loading";
+import { ThemeContextProvider } from "@/context/ThemeContext";
+import ThemeProvider from "@/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <UserProvider>
-          <ThemeProvider>
-            <Providers>
+          <ThemeContextProvider>
+            <ThemeProvider>
               <div className="container">
                 <div className="wrapper">
                   <NavBar />
@@ -32,8 +32,8 @@ export default function RootLayout({ children }) {
                   <Footer />
                 </div>
               </div>
-            </Providers>
-          </ThemeProvider>
+            </ThemeProvider>
+          </ThemeContextProvider>
         </UserProvider>
       </body>
     </html>
