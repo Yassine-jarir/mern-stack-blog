@@ -61,14 +61,13 @@ a:hover{
   justify-content: space-between;
       min-height: 100vh;
 }
-.dark {
-  /* background-color: #0f172a;  */
-  color: #ddd !important;
+.da {
+   color: #ddd !important;
   background-color: #1f273a !important;
-  /* color: #a6a6a6; */
+ 
 }
 
-.light {
+.li{
   background-color: white !important;
   color: black !important;
  
