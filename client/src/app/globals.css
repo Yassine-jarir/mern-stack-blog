@@ -63,14 +63,14 @@ a:hover{
 }
 .dark {
   /* background-color: #0f172a;  */
-  color: #ddd;
-  background-color: #1f273a;
+  color: #ddd !important;
+  background-color: #1f273a !important;
   /* color: #a6a6a6; */
 }
 
 .light {
-  background-color: white;
-  color: black;
+  background-color: white !important;
+  color: black !important;
  
 }
 @media screen and (max-width: 1536px) {
