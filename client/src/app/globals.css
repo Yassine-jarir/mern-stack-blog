@@ -62,7 +62,7 @@ a:hover{
       min-height: 100vh;
 }
 .dark {
-  background-color: #0f172a; 
+  /* background-color: #0f172a;  */
   color: #ddd;
   background-color: #1f273a;
   /* color: #a6a6a6; */
