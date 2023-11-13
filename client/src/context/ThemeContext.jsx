@@ -7,7 +7,7 @@ export const ThemeContext = createContext();
 const getFromLocalStorage = () => {
   if (typeof window !== "undefined") {
     const value = localStorage.getItem("theme");
-    return value || "lights";
+    return value || "li";
   }
 };
 
@@ -17,7 +17,7 @@ export const ThemeContextProvider = ({ children }) => {
   });
 
   const toggle = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === "li" ? "da" : "li");
   };
 
   useEffect(() => {

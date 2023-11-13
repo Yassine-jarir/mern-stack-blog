@@ -1,3 +1,12 @@
+.da {
+  color: #ddd !important;
+  background-color: #1f273a !important;
+}
+
+.li {
+  background-color: white !important;
+  color: black !important;
+}
 .ql-container {
   font-size: 20px !important;
 }
@@ -41,12 +50,12 @@ a:hover {
   justify-content: space-between;
   min-height: 100vh;
 }
-.dark {
+.da {
   color: #ddd !important;
   background-color: #1f273a !important;
 }
 
-.light {
+.li {
   background-color: white !important;
   color: black !important;
 }
