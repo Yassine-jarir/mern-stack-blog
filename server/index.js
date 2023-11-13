@@ -10,18 +10,11 @@ const path = require("path");
 // global middleware
 app.use(express.json());
 app.use(
-  cors(
-    {
-      origin: ["https://mern-stack-blog-topaz.vercel.app/"],
-      methods: ["POST", "GET", "PATCH"],
-      credentials: true,
-      allowedHeaders: ["Content-Type", "Authorization"],
-      exposedHeaders: ["Content-Type", "Authorization"],
-    },
-    {
-      withCredentials: true,
-    }
-  )
+  cors({
+    origin: ["https://mern-stack-blog-client.vercel.app"],
+    methods: ["POST", "GET", "PATCH"],
+    credentials: true,
+  })
 );
 
 //routes
