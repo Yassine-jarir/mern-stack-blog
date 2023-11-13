@@ -55,7 +55,7 @@ function Write() {
 
     axios({
       method: "POST",
-      url: "https://mern-stack-blog1.vercel.app/blog/write",
+      url: "https://mern-stack-blog-b83n3x3sh-yassine-jarir.vercel.app/blog/write",
       data: formData,
       headers: { authorization: `Bearer ${user?.token}` },
     })

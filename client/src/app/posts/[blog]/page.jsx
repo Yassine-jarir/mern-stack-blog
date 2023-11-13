@@ -18,7 +18,7 @@ function page() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `https://mern-stack-blog1.vercel.app/blog/blog/${blog}`,
+      url: `https://mern-stack-blog-b83n3x3sh-yassine-jarir.vercel.app/blog/blog/${blog}`,
       headers: { Authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {
