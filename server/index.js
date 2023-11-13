@@ -24,7 +24,7 @@ mongoose
     "mongodb+srv://yassine:yassine@cluster0.4mvd9mo.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
-    app.listen(3001 || process.env.PORT, () => {
+    app.listen(process.env.PORT || 3001, () => {
       console.log("success");
     });
   })
