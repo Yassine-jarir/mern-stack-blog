@@ -11,3 +11,6 @@
   flex-direction: column;
   gap: 19px;
 }
+.signup:hover {
+  color: white !important;
+}

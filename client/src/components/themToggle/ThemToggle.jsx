@@ -14,7 +14,7 @@ const ThemeToggle = () => {
       className={styles.container}
       onClick={toggle}
       style={
-        theme === "da"
+        theme === "dark"
           ? { backgroundColor: "white" }
           : { backgroundColor: "#0f172a" }
       }
@@ -23,7 +23,7 @@ const ThemeToggle = () => {
       <div
         className={styles.ball}
         style={
-          theme === "da"
+          theme === "dark"
             ? { left: 1, background: "#0f172a" }
             : { right: 1, background: "white" }
         }

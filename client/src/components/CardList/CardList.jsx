@@ -1,6 +1,5 @@
 "use client";
 import Loading from "@/app/Loading";
-
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../card/Card";
@@ -62,7 +61,7 @@ function CardList() {
         <Link
           href="/signup"
           type="button"
-          className="btn btn-outline-dark flex justify-content-center margin-auto container-fluid mb-5"
+          className={`btn btn-outline-dark flex justify-content-center margin-auto container-fluid mb-5  ${styles.signup}`}
         >
           Please Signup To Post
         </Link>
