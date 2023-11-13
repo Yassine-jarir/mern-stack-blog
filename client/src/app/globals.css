@@ -1,3 +1,10 @@
+:root {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
+}
+
 .ql-container{
   font-size: 20px !important;
 }
@@ -11,7 +18,7 @@
  --softBg: #f0f0f0,
  --softTextColor: #626262
 }
-.dark{
+/* .dark{
   background-color: black;
   color: white;
   transition: all 0.3s;
@@ -24,6 +31,7 @@
 a{
  
 }
+*/
 .dark a{
   color:white ;
   text-decoration:none;
@@ -55,7 +63,7 @@ a:hover{
   transition: all 0.4s;
 }
 /* container for apply theme */
-.container{
+.containers{
   min-height: 100vh;
   background-color: var(--bg);
   
@@ -73,7 +81,19 @@ a:hover{
   justify-content: space-between;
       min-height: 100vh;
 }
+.dark {
+  --bg: #0f172a;
+  --textColor: #ddd;
+  --softBg: #1f273a;
+  --softTextColor: #a6a6a6;
+}
 
+.light {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
+}
 @media screen and (max-width: 1536px) {
   .wrapper{
     max-width: 1366px;

@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <UserProvider>
           <ThemeContextProvider>
             <ThemeProvider>
-              <div className="container">
+              <div className="containers">
                 <div className="wrapper">
                   <NavBar />
                   <ToastContainer />
