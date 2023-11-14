@@ -53,7 +53,7 @@ function page() {
       )}
       <div className={styles.imgContainer}>
         <Image
-          src={`https://mern-stack-blog1.vercel.app/${singleblog?.image}`}
+          src={`https://mern-stack-blog-topaz.vercel.app/${singleblog?.image}`}
           fill
           className={styles.img}
         />
