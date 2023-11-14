@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 app.use((req, res, next) => {
   const allowedOrigins = [
-    "https://mern-stack-blog-client.vercel.app",
+    "https://mern-stack-blog-frontend.vercel.app",
     "http://localhost:3000",
   ];
   const origin = req.headers.origin;
