@@ -5,7 +5,7 @@ import styles from "./CardList.module.css";
 import Card from "../card/Card";
 import axios from "axios";
 import { UserContext } from "@/context/AuthContext";
-import ReactJsPagination from "react-js-pagination"; // Change the import statement
+import ReactJsPagination from "react-js-pagination";
 import { Suspense } from "react";
 import Link from "next/link";
 
@@ -69,12 +69,6 @@ function CardList() {
         totalItemsCount={pageCount * limits}
         pageRangeDisplayed={5}
         onChange={handlePageClick}
-        // itemClass="page-item"
-        // linkClass="page-link"
-        // containerClassName={styles.pagination__container}
-        // activeClassName={styles.pagination__active}
-        // previousLinkClassName={styles.orangeBtn}
-        // nextLinkClassName={styles.orangeBtn}
         innerClass={styles.pagination__container}
         linkClassPrev={styles.orangeBtn}
         linkClassNext={styles.orangeBtn}
