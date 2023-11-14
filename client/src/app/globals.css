@@ -48,7 +48,7 @@ a:hover {
 }
 
 .light {
-  background-color: white !important;
+  background-color: #f6f6f6f6 !important;
   color: black !important;
   transition: all 0.4s;
 }

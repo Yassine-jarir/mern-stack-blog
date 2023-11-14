@@ -5,7 +5,6 @@ import Footer from "@/components/footer/Footer";
 import { UserProvider } from "@/context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import { Suspense } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Loading from "./Loading";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import ThemeProvider from "@/providers/ThemeProvider";

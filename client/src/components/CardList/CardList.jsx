@@ -6,7 +6,7 @@ import Card from "../card/Card";
 import axios from "axios";
 import { UserContext } from "@/context/AuthContext";
 import ReactPaginate from "react-paginate";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import { Suspense } from "react";
 import Link from "next/link";
 function CardList() {
