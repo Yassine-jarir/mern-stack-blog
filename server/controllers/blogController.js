@@ -57,7 +57,7 @@ const allblogs = async (req, res) => {
     results.totalBlogs = blogs.length;
 
     //2- how many page
-    results.pageCount = Math.ceil(blogs.length / limits);
+    results.pageCount = Math.ceil(blogs.length / limits) || 1;
     // next and prev btn
     if (endindex < blogs.length) {
       results.next = {
