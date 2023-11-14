@@ -19,21 +19,18 @@ function AuthLinks() {
       {!user ? (
         <>
           <Link href="/login">Login</Link>
-          <Link
-            href="/signup"
-            className={`btn btn-outline-dark ${styles.signup}`}
-          >
+          <Link href="/signup" className={`  ${styles.linkres}`}>
             signup
           </Link>
         </>
       ) : (
         <>
-          <Link href="/write" className={styles.linkres}>
+          <Link href="/write" className={`  ${styles.none}`}>
             New Blog
           </Link>
           <button
             onClick={handlelogout}
-            className={`btn btn-dark ${styles.linkres}`}
+            className={`btn btn-dark ${styles.linkres} ${styles.none}`}
           >
             Logout
           </button>

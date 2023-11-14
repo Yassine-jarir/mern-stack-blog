@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "../login/login.module.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function Signup() {
   const [username, setusername] = useState("");
@@ -21,7 +23,7 @@ function Signup() {
         })
         .then((response) => {
           router.push("/login");
-          toast.success("signup success, Please Login !!", {
+          toast.success("sign up success, login now !!", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

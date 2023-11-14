@@ -82,3 +82,23 @@
 .lis {
   color: black;
 }
+.linkres {
+  padding: 10px;
+  border-radius: 12px;
+  background-color: black;
+  color: white !important;
+  cursor: pointer;
+  transition: all 0.4s;
+  border: none;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+.linkres:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black !important;
+}

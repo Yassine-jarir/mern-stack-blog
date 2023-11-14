@@ -4,7 +4,7 @@ import styles from "./write.module.css";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { UserContext } from "@/context/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
@@ -104,7 +104,6 @@ function Write() {
         className={styles.quill}
       />
 
-      <ToastContainer />
       <button className={styles.publish}>Publish</button>
     </form>
   );

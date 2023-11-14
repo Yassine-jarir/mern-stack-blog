@@ -4,7 +4,8 @@ import styles from "../login/login.module.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UserContext } from "@/context/AuthContext";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
@@ -13,6 +14,7 @@ function Login() {
   const { user, dispatch } = useContext(UserContext);
   const handlesubmit = (e) => {
     e.preventDefault();
+
     axios
       .post("https://mern-stack-blog-topaz.vercel.app/user/login", {
         username: username,
@@ -20,7 +22,6 @@ function Login() {
       })
       .then((response) => {
         localStorage.setItem("userToken", JSON.stringify(response.data));
-        router.push("/");
         toast.success("logged in success", {
           position: "top-right",
           autoClose: 5000,
@@ -32,6 +33,7 @@ function Login() {
           theme: "colored",
         });
         dispatch({ type: "LOGIN", payload: response.data });
+        router.push("/");
       })
       .catch((err) => {
         seterrors(err?.response?.data.error);
