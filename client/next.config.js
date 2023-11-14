@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["https://mern-stack-blog-client.vercel.app"],
+    domains: ["mern-stack-blog-client.vercel.app"],
   },
 };
 
