@@ -14,3 +14,65 @@
 .signup:hover {
   color: white !important;
 }
+/* /// */
+
+.pagination__container {
+  max-width: 40rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  align-items: center;
+  margin: auto;
+}
+@media screen and (max-width: 768px) {
+  .pagination__container {
+    padding: 2rem 0;
+  }
+}
+
+.pagination__container li {
+  padding: 0.8rem;
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .pagination__container li {
+    padding: 0 !important;
+  }
+}
+
+.pagination__container li a {
+  cursor: pointer;
+  color: #bababa;
+  background: #242424;
+  padding: 0.7rem;
+  border-radius: 7px;
+}
+
+.pagination__container li a:hover {
+  background: #2f2f2f;
+}
+
+.pagination__container li .orangeBtn {
+  background-color: #f90 !important;
+  color: #000;
+  padding: 0.5rem;
+  width: auto;
+  border: 0;
+  border-radius: 7px;
+  font-size: 1.4rem;
+  font-weight: lighter;
+  min-width: 14rem;
+  cursor: pointer;
+  background: #2f2f2f;
+}
+
+.pagination__container li .orangeBtn:hover {
+  background-color: #ff9f0e !important;
+}
+
+.pagination__container li .grayBtn {
+  @media (max-width: 768px) {
+    padding: 0rem;
+  }
+}

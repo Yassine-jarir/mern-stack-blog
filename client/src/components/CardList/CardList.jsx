@@ -35,8 +35,6 @@ function CardList() {
       headers: { Authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {
-        // setblogs(response.data);
-
         setpageCount(response.data.pageCount);
         setblogs(response.data.result);
       })
@@ -67,21 +65,15 @@ function CardList() {
         </Link>
       )}
       <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
+        nextLabel="next"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
-        containerClassName="pagination justify-content-center mt-4"
-        pageLinkClassName="page-link"
-        pageClassName="page-item"
-        activeClassName="active"
-        activeLinkClassName="active"
-        nextLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
+        previousLabel="prev"
+        containerClassName={styles.pagination__container}
+        activeClassName={styles.pagination__active}
+        previousLinkClassName={styles.orangeBtn}
+        nextLinkClassName={styles.orangeBtn}
+        pageLinkClassName={styles.grayBtn}
       />
     </div>
   );

@@ -2,12 +2,19 @@ import React, { Suspense, useContext } from "react";
 import styles from "./card.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeContext } from "@/context/ThemeContext";
 
 function Card({ blogs }) {
   const { title, image, description, createdAt, author, _id } = blogs;
+  const { toggle, theme } = useContext(ThemeContext);
 
   return (
-    <Link href={`/posts/${_id}`} className={styles.container}>
+    <Link
+      href={`/posts/${_id}`}
+      className={`${styles.container} ${
+        theme === "dark" ? styles.darkcard : styles.lightcard
+      } `}
+    >
       <div className={styles.imageContainer}>
         <Image
           src={`https://mern-stack-blog-topaz.vercel.app/${image}`}
