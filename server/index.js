@@ -11,13 +11,19 @@ const path = require("path");
 app.use(express.json());
 app.use(cors());
 app.use((req, res, next) => {
-  // Replace 'https://your-vercel-frontend-url.vercel.app' with the actual URL of your Vercel frontend app
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://mern-stack-blog-client.vercel.app"
-  );
+  const allowedOrigins = [
+    "https://mern-stack-blog-client.vercel.app",
+    "http://localhost:3000",
+  ];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.header("Access-Control-Allow-Methods", "GET, POST, PATCH");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
   next();
 });
 //routes

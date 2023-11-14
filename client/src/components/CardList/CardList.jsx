@@ -11,7 +11,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 function CardList() {
   const [blogs, setblogs] = useState([]);
-  const [limits, setlimits] = useState(5);
+  const [limits, setlimits] = useState(7);
   const [pageCount, setpageCount] = useState();
   const currentPage = useRef();
   const { user } = useContext(UserContext);
@@ -73,7 +73,6 @@ function CardList() {
         pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel="< previous"
-        renderOnZeroPageCount={null}
         containerClassName="pagination justify-content-center mt-4"
         pageLinkClassName="page-link"
         pageClassName="page-item"
