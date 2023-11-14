@@ -15,13 +15,10 @@ function Signup() {
     e.preventDefault();
     if (passwordsMatch) {
       axios
-        .post(
-          "https://mern-stack-blog-b83n3x3sh-yassine-jarir.vercel.app/user/signup",
-          {
-            username: username,
-            password: password,
-          }
-        )
+        .post("https://mern-stack-blog-topaz.vercel.app/user/signup", {
+          username: username,
+          password: password,
+        })
         .then((response) => {
           router.push("/login");
           toast.success("signup success, Please Login !!", {

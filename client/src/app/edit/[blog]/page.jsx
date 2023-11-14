@@ -48,7 +48,7 @@ function Edit() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `https://mern-stack-blog-b83n3x3sh-yassine-jarir.vercel.app/blog/blog/${blog}`,
+      url: `https://mern-stack-blog-topaz.vercel.app/blog/blog/${blog}`,
       headers: { authorization: `Bearer ${user?.token}` },
     })
       .then((response) => {
@@ -67,7 +67,7 @@ function Edit() {
     formData.append("image", image);
     axios({
       method: "PATCH",
-      url: `https://mern-stack-blog-b83n3x3sh-yassine-jarir.vercel.app/blog/update/${blog}`,
+      url: `https://mern-stack-blog-topaz.vercel.app/blog/update/${blog}`,
       headers: { authorization: `Bearer ${user.token}` },
       data: formData,
     })

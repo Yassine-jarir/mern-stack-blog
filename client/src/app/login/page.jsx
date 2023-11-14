@@ -14,13 +14,10 @@ function Login() {
   const handlesubmit = (e) => {
     e.preventDefault();
     axios
-      .post(
-        "https://mern-stack-blog-b83n3x3sh-yassine-jarir.vercel.app/user/login",
-        {
-          username: username,
-          password: password,
-        }
-      )
+      .post("https://mern-stack-blog-topaz.vercel.app/user/login", {
+        username: username,
+        password: password,
+      })
       .then((response) => {
         localStorage.setItem("userToken", JSON.stringify(response.data));
         toast.success("logged in success", {
