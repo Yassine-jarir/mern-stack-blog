@@ -20,6 +20,7 @@ function Login() {
       })
       .then((response) => {
         localStorage.setItem("userToken", JSON.stringify(response.data));
+        router.push("/");
         toast.success("logged in success", {
           position: "top-right",
           autoClose: 5000,
@@ -31,7 +32,6 @@ function Login() {
           theme: "colored",
         });
         dispatch({ type: "LOGIN", payload: response.data });
-        router.push("/");
       })
       .catch((err) => {
         seterrors(err?.response?.data.error);
