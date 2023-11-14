@@ -6,7 +6,6 @@ import Image from "next/image";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { UserContext } from "@/context/AuthContext";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 
 function page() {

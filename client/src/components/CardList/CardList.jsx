@@ -5,10 +5,10 @@ import styles from "./CardList.module.css";
 import Card from "../card/Card";
 import axios from "axios";
 import { UserContext } from "@/context/AuthContext";
-import ReactPaginate from "react-paginate";
-
+import ReactJsPagination from "react-js-pagination"; // Change the import statement
 import { Suspense } from "react";
 import Link from "next/link";
+
 function CardList() {
   const [blogs, setblogs] = useState([]);
   const [limits, setlimits] = useState(7);
@@ -16,15 +16,14 @@ function CardList() {
   const currentPage = useRef();
   const { user } = useContext(UserContext);
   const [err, seterr] = useState("");
+
   useEffect(() => {
-    // if (user && user.token) {
     currentPage.current = 1;
     getallblogs();
-    // }
   }, []);
 
-  const handlePageClick = (e) => {
-    currentPage.current = e.selected + 1;
+  const handlePageClick = (pageNumber) => {
+    currentPage.current = pageNumber;
     getallblogs();
   };
 
@@ -51,7 +50,7 @@ function CardList() {
           <div className={styles.posts}>
             {blogs &&
               blogs.map((blog) => {
-                return <Card blogs={blog} />;
+                return <Card blogs={blog} key={blog.id} />;
               })}
           </div>
         </Suspense>
@@ -64,18 +63,32 @@ function CardList() {
           Please Signup To Post
         </Link>
       )}
-      <ReactPaginate
-        nextLabel="next"
-        onPageChange={handlePageClick}
-        pageCount={pageCount}
-        previousLabel="prev"
-        containerClassName={styles.pagination__container}
-        activeClassName={styles.pagination__active}
-        previousLinkClassName={styles.orangeBtn}
-        nextLinkClassName={styles.orangeBtn}
-        pageLinkClassName={styles.grayBtn}
+      <ReactJsPagination
+        activePage={currentPage.current}
+        itemsCountPerPage={limits}
+        totalItemsCount={pageCount * limits}
+        pageRangeDisplayed={5}
+        onChange={handlePageClick}
+        // itemClass="page-item"
+        // linkClass="page-link"
+        // containerClassName={styles.pagination__container}
+        // activeClassName={styles.pagination__active}
+        // previousLinkClassName={styles.orangeBtn}
+        // nextLinkClassName={styles.orangeBtn}
+        innerClass={styles.pagination__container}
+        linkClassPrev={styles.orangeBtn}
+        linkClassNext={styles.orangeBtn}
+        linkClassFirst={styles.orangeBtn}
+        linkClassLast={styles.orangeBtn}
+        activeClass={styles.pagination__active}
+        itemClass={styles.linka}
+        itemClassFirst={styles.lis}
+        itemClassPrev={styles.lis}
+        itemClassNext={styles.lis}
+        itemClassLast={styles.lis}
       />
     </div>
   );
 }
+
 export default CardList;
