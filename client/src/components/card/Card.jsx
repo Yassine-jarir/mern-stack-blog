@@ -16,12 +16,7 @@ function Card({ blogs }) {
       } `}
     >
       <div className={styles.imageContainer}>
-        <Image
-          src={`https://mern-stack-blog-topaz.vercel.app/${image}`}
-          alt="img"
-          fill
-          className={styles.image}
-        />
+        <Image src={image} alt="img" fill className={styles.image} />
       </div>
       <div className={styles.textContainer}>
         <span>
