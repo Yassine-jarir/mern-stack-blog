@@ -76,24 +76,22 @@ const singleBlog = async (req, res) => {
 };
 
 const updateblog = async (req, res) => {
-  uploadMiddleware(req, res, async (err) => {
-    if (err) {
-      return res.status(400).json({ error: "error uploading image" });
-    }
-    try {
-      const { title, description } = req.body;
-      const image = req.file.filename;
+  try {
+    const { title, description, image } = req.body;
 
-      const blog = await blogModel.findByIdAndUpdate(req.params.id, {
-        title,
-        description,
-        image,
-      });
-      res.status(200).json({ blog });
-    } catch (error) {
-      console.log("update error", error);
-    }
-  });
+    // Upload image to Cloudinary
+    const result = await cloudinary.uploader.upload(image, {
+      folder: "blog_images", // Specify the folder in Cloudinary
+    });
+    const blog = await blogModel.findByIdAndUpdate(req.params.id, {
+      title,
+      description,
+      image: result.secure_url,
+    });
+    res.status(200).json({ blog });
+  } catch (error) {
+    console.log("update error", error);
+  }
 };
 
 module.exports = {
