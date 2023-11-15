@@ -17,7 +17,8 @@ const uploadMiddleware = multer({ storage }).single("image");
 const newBlog = async (req, res) => {
   uploadMiddleware(req, res, async (err) => {
     if (err) {
-      return res.status(400).json({ error: "error uploading image" });
+      console.log(err);
+      return res.status(400).json({ error: err });
     }
 
     const { title, description } = req.body;

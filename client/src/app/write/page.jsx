@@ -44,13 +44,13 @@ function Write() {
     "link",
     "image",
   ];
-
   const handlesubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image);
     formData.append("title", title);
     formData.append("description", description);
+    console.log(image);
     // formData.append("author", user.user._id);
 
     axios({
