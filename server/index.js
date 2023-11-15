@@ -17,8 +17,12 @@ app.use((req, res, next) => {
   ];
   const origin = req.headers.origin;
 
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
+  // If the request is from Cloudinary, allow all origins
+  if (req.headers["user-agent"].includes("Cloudinary")) {
+    res.header("Access-Control-Allow-Origin", "*");
+  } else if (allowedOrigins.includes(origin)) {
+    // If the request is from an allowed origin, set the specific origin
+    res.header("Access-Control-Allow-Origin", origin);
   }
 
   res.header("Access-Control-Allow-Methods", "GET, POST, PATCH");
