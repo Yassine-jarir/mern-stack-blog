@@ -5,7 +5,7 @@ const cloudinary = require("../utils/cloudinary.js");
 newBlog = async (req, res) => {
   const { title, description, image } = req.body;
   const result = await cloudinary.uploader.upload(image, {
-    folder: "blog_images",
+    folder: blog,
   });
 
   const user = await userModel.findById(req.user._id);
