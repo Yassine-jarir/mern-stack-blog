@@ -1,45 +1,29 @@
-const multer = require("multer");
-const path = require("path");
 const blogModel = require("../models/blogModel");
 const userModel = require("../models/userModel.js");
-// upload image
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../images"));
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
-  },
-});
-
-const uploadMiddleware = multer({ storage }).single("image");
+const cloudinary = require("../utils/cloudinary.js");
 
 const newBlog = async (req, res) => {
-  uploadMiddleware(req, res, async (err) => {
-    if (err) {
-      console.log(err);
-      return res.status(400).json({ error: err });
-    }
+  const { title, description, image } = req.body;
+  const user = await userModel.findById(req.user._id);
+  author = user.username;
 
-    const { title, description } = req.body;
-    const image = req.file.filename;
-    const user = await userModel.findById(req.user._id);
-    author = user.username;
-    console.log("aauthor", author);
+  try {
+    // Upload image to Cloudinary
+    const result = await cloudinary.uploader.upload(image, {
+      folder: "blog_images", // Specify the folder in Cloudinary
+    });
+    const blog = await blogModel.create({
+      title,
+      image: result.secure_url,
 
-    try {
-      const blog = await blogModel.create({
-        title,
-        image,
-        description,
-        author,
-      });
-      return res.status(200).json(blog);
-    } catch (error) {
-      console.error(error);
-      return res.status(400).json({ error: "error creating blog" });
-    }
-  });
+      description,
+      author,
+    });
+    return res.status(200).json(blog);
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: "error creating blog" });
+  }
 };
 
 // allblogs

@@ -58,20 +58,7 @@ function CardList() {
         <Link
           href="/signup"
           type="button"
-          className={`btn btn-outline-dark flex justify-content-center margin-auto container-fluid mb-5  ${styles.linkres} .linkres {
-  padding: 10px;
-  border-radius: 12px;
-  background-color: black;
-  color: white !important;
-  cursor: pointer;
-  transition: all 0.4s;
-  border: none;
-}
-.linkres:hover {
-  background-color: white;
-  border: 1px solid black;
-  color: black !important;
-}`}
+          className={`btn btn-outline-dark flex justify-content-center margin-auto container-fluid mb-5  ${styles.linkres}`}
         >
           Please Signup To Post
         </Link>
