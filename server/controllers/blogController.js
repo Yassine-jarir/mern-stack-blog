@@ -1,27 +1,44 @@
+const multer = require("multer");
+const path = require("path");
 const blogModel = require("../models/blogModel");
 const userModel = require("../models/userModel.js");
-const uploadimage = require("../utils/cloudinary.js");
+// upload image
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../images"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
+  },
+});
+
+const uploadMiddleware = multer({ storage }).single("image");
 
 const newBlog = async (req, res) => {
-  const { title, description } = req.body;
-  const user = await userModel.findById(req.user._id);
-  const author = user.username;
+  uploadMiddleware(req, res, async (err) => {
+    if (err) {
+      return res.status(400).json({ error: "error uploading image" });
+    }
 
-  try {
-    // Upload image to Cloudinary
-    imageUrl = await uploadimage(req.body.file);
-    const blog = await blogModel.create({
-      title,
-      image: imageUrl,
+    const { title, description } = req.body;
+    const image = req.file.filename;
+    const user = await userModel.findById(req.user._id);
+    author = user.username;
+    console.log("aauthor", author);
 
-      description,
-      author,
-    });
-    return res.status(200).json(blog);
-  } catch (error) {
-    console.error(error);
-    return res.status(400).json({ error: "error creating blog" });
-  }
+    try {
+      const blog = await blogModel.create({
+        title,
+        image,
+        description,
+        author,
+      });
+      return res.status(200).json(blog);
+    } catch (error) {
+      console.error(error);
+      return res.status(400).json({ error: "error creating blog" });
+    }
+  });
 };
 
 // allblogs
@@ -74,22 +91,24 @@ const singleBlog = async (req, res) => {
 };
 
 const updateblog = async (req, res) => {
-  try {
-    const { title, description, image } = req.body;
+  uploadMiddleware(req, res, async (err) => {
+    if (err) {
+      return res.status(400).json({ error: "error uploading image" });
+    }
+    try {
+      const { title, description } = req.body;
+      const image = req.file.filename;
 
-    // Upload image to Cloudinary
-    const result = await cloudinary.uploader.upload(image, {
-      folder: "blog_images", // Specify the folder in Cloudinary
-    });
-    const blog = await blogModel.findByIdAndUpdate(req.params.id, {
-      title,
-      description,
-      image: result.secure_url,
-    });
-    res.status(200).json({ blog });
-  } catch (error) {
-    console.log("update error", error.message);
-  }
+      const blog = await blogModel.findByIdAndUpdate(req.params.id, {
+        title,
+        description,
+        image,
+      });
+      res.status(200).json({ blog });
+    } catch (error) {
+      console.log("update error", error);
+    }
+  });
 };
 
 module.exports = {
