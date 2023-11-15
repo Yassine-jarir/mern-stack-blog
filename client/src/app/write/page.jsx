@@ -73,6 +73,7 @@ function Write() {
         router.push("/");
       })
       .catch((err) => {
+        console.log(err);
         seterr(err);
       });
   };
@@ -103,7 +104,7 @@ function Write() {
         onChange={(e) => setdescription(e)}
         className={styles.quill}
       />
-
+      {err && err}
       <button className={styles.publish}>Publish</button>
     </form>
   );
