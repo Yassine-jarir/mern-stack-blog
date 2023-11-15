@@ -1,44 +1,32 @@
-const multer = require("multer");
-const path = require("path");
 const blogModel = require("../models/blogModel");
 const userModel = require("../models/userModel.js");
+const cloudinary = require("../utils/cloudinary.js");
 // upload image
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../images"));
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
-  },
-});
-
-const uploadMiddleware = multer({ storage }).single("image");
-
-const newBlog = async (req, res) => {
-  uploadMiddleware(req, res, async (err) => {
-    if (err) {
-      return res.status(400).json({ error: "error uploading image" });
-    }
-
-    const { title, description } = req.body;
-    const image = req.file.filename;
-    const user = await userModel.findById(req.user._id);
-    author = user.username;
-    console.log("aauthor", author);
-
-    try {
-      const blog = await blogModel.create({
-        title,
-        image,
-        description,
-        author,
-      });
-      return res.status(200).json(blog);
-    } catch (error) {
-      console.error(error);
-      return res.status(400).json({ error: "error creating blog" });
-    }
+ewBlog = async (req, res) => {
+  const { title, description, image } = req.body;
+  const result = await cloudinary.uploader.upload(image, {
+    folder: "blog_images",
   });
+
+  const user = await userModel.findById(req.user._id);
+  const author = user.username;
+  console.log("aauthor", author);
+
+  try {
+    const blog = await blogModel.create({
+      title,
+      image: {
+        public_id: result.public_id,
+        url: result.secure_url,
+      },
+      description,
+      author,
+    });
+    return res.status(200).json(blog);
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: "error creating blog" });
+  }
 };
 
 // allblogs
@@ -91,24 +79,25 @@ const singleBlog = async (req, res) => {
 };
 
 const updateblog = async (req, res) => {
-  uploadMiddleware(req, res, async (err) => {
-    if (err) {
-      return res.status(400).json({ error: "error uploading image" });
-    }
-    try {
-      const { title, description } = req.body;
-      const image = req.file.filename;
+  const { title, description, image } = req.body;
 
-      const blog = await blogModel.findByIdAndUpdate(req.params.id, {
-        title,
-        description,
-        image,
-      });
-      res.status(200).json({ blog });
-    } catch (error) {
-      console.log("update error", error);
-    }
+  const result = await cloudinary.uploader.upload(image, {
+    folder: "blog_images",
   });
+
+  try {
+    const blog = await blogModel.findByIdAndUpdate(req.params.id, {
+      title,
+      description,
+      image: {
+        public_id: result.public_id,
+        url: result.secure_url,
+      },
+    });
+    res.status(200).json({ blog });
+  } catch (error) {
+    console.log("update error", error);
+  }
 };
 
 module.exports = {

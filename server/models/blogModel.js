@@ -7,9 +7,14 @@ const blogSchema = mongoose.Schema(
       require: true,
     },
     image: {
-      type: String,
-      require: true,
+      public_id: {
+        type: String,
+      },
+      url: {
+        type: String,
+      },
     },
+
     description: {
       type: String,
       require: true,
