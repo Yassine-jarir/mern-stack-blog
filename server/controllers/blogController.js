@@ -1,20 +1,22 @@
 const blogModel = require("../models/blogModel");
 const userModel = require("../models/userModel.js");
-const cloudinary = require("../utils/cloudinary.js");
-
+const uploadimage = require("../utils/cloudinary.js");
+ 
 const newBlog = async (req, res) => {
-  const { title, description, image } = req.body;
+  const { title, description } = req.body;
   const user = await userModel.findById(req.user._id);
-  author = user.username;
-
+  const author = user.username;
+  const imageurl = null
+  uploadimage(req.body.file).then((url) => {
+   imageurl = url 
+  }).catch((err) => {
+   console.log(err)
+  });
   try {
     // Upload image to Cloudinary
-    const result = await cloudinary.uploader.upload(image, {
-      folder: "blog_images", // Specify the folder in Cloudinary
-    });
     const blog = await blogModel.create({
       title,
-      image: result.secure_url,
+      image: imageurl,
 
       description,
       author,
@@ -90,7 +92,7 @@ const updateblog = async (req, res) => {
     });
     res.status(200).json({ blog });
   } catch (error) {
-    console.log("update error", error);
+    console.log("update error", error.message);
   }
 };
 

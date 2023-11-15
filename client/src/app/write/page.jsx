@@ -44,14 +44,30 @@ function Write() {
     "link",
     "image",
   ];
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
   const handlesubmit = async (e) => {
     e.preventDefault();
+    const base64 = await convertBase64(image);
+
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("file", base64);
     formData.append("title", title);
     formData.append("description", description);
-    console.log(image);
-    // formData.append("author", user.user._id);
+    console.log(base64);
 
     axios({
       method: "POST",
@@ -77,7 +93,7 @@ function Write() {
         seterr(err);
       });
   };
-
+  console.log(err);
   return (
     <form onSubmit={handlesubmit} className={styles.container}>
       <input
@@ -104,7 +120,7 @@ function Write() {
         onChange={(e) => setdescription(e)}
         className={styles.quill}
       />
-      {err && err}
+
       <button className={styles.publish}>Publish</button>
     </form>
   );
