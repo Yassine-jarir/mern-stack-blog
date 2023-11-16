@@ -51,7 +51,7 @@ function page() {
         <div>hello</div>
       )}
       <div className={styles.imgContainer}>
-        <Image src={singleblog?.Image} fill className={styles.img} />
+        <Image src={singleblog?.image} fill className={styles.img} />
       </div>
       <div dangerouslySetInnerHTML={{ __html: singleblog?.description }} />
     </div>
