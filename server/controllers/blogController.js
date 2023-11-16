@@ -86,7 +86,18 @@ const updateblog = async (req, res) => {
   }
 };
 
+const deleteblog = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await blogModel.findByIdAndDelete(id);
+    res.status(201).json({ message: "blog deleted successfully" });
+  } catch (error) {
+    res.status(404).json({ error: error });
+  }
+};
+
 module.exports = {
+  deleteblog,
   updateblog,
   newBlog,
   allblogs,

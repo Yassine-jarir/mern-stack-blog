@@ -37,6 +37,7 @@
 }
 .linkres {
   padding: 10px;
+  font-weight: bolder;
   border-radius: 12px;
   background-color: black;
   color: white !important;
@@ -54,6 +55,26 @@
   text-align: center;
   line-height: 2;
   font-weight: bolder;
+}
+.btns {
+  display: flex;
+  gap: 40px;
+}
+.deletebtn {
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #f75050;
+  color: white !important;
+  cursor: pointer;
+  transition: all 0.4s;
+  border: none;
+}
+
+.deletebtn:hover {
+  background-color: white;
+  border: 1px solid #f75050;
+  color: #f75050 !important;
 }
 @media screen and (max-width: 1536px) {
   .title {
