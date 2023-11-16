@@ -35,6 +35,26 @@
   color: #e91e63;
   font-weight: 600;
 }
+.linkres {
+  padding: 10px;
+  border-radius: 12px;
+  background-color: black;
+  color: white !important;
+  cursor: pointer;
+  transition: all 0.4s;
+  border: none;
+}
+.linkres:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black !important;
+}
+.desc {
+  padding: 10px;
+  text-align: center;
+  line-height: 2;
+  font-weight: bolder;
+}
 @media screen and (max-width: 1536px) {
   .title {
     font-size: 54px;

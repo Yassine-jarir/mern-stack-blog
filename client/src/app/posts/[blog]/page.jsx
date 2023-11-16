@@ -7,7 +7,8 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { UserContext } from "@/context/AuthContext";
 import Link from "next/link";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function page() {
   const { blog } = useParams();
   const { user } = useContext(UserContext);
@@ -27,6 +28,18 @@ function page() {
         seterr(err);
       });
   }, []);
+  const handleEdit = () => {
+    toast.error("this is not your blog, you can only edit your own blog", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -42,18 +55,23 @@ function page() {
         <div>
           <Link
             href={`/edit/${singleblog?._id}`}
-            className="btn btn-outline-dark"
+            className={`${styles.linkres}`}
           >
             Edit blog
           </Link>
         </div>
       ) : (
-        <div>hello</div>
+        <button onClick={handleEdit} className={`${styles.linkres}`}>
+          Edit blog
+        </button>
       )}
       <div className={styles.imgContainer}>
         <Image src={singleblog?.image} fill className={styles.img} />
       </div>
-      <div dangerouslySetInnerHTML={{ __html: singleblog?.description }} />
+      <div
+        className={styles.desc}
+        dangerouslySetInnerHTML={{ __html: singleblog?.description }}
+      />
     </div>
   );
 }
