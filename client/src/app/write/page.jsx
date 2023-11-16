@@ -98,11 +98,6 @@ function Write() {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    // const formData = new FormData();
-    // formData.append("image", media);
-    // formData.append("title", title);
-    // formData.append("description", description);
-    // console.log(formData);
     axios({
       method: "POST",
       url: "https://mern-stack-blog-topaz.vercel.app/blog/write",
