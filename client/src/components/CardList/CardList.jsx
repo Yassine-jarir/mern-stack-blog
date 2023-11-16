@@ -60,7 +60,7 @@ function CardList() {
           type="button"
           className={`btn btn-outline-dark flex justify-content-center margin-auto container-fluid mb-5  ${styles.linkres}`}
         >
-          Please Signup To Post
+          Signup To Create New Post
         </Link>
       )}
       <ReactJsPagination
@@ -69,7 +69,9 @@ function CardList() {
         totalItemsCount={pageCount * limits}
         pageRangeDisplayed={5}
         onChange={handlePageClick}
-        innerClass={styles.pagination__container}
+        innerClass={`${styles.pagination__container} ${
+          user?.token ? "" : styles.disnone
+        }`}
         linkClassPrev={styles.orangeBtn}
         linkClassNext={styles.orangeBtn}
         linkClassFirst={styles.orangeBtn}
