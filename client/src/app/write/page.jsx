@@ -47,13 +47,11 @@ function Write() {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-    const base64 = await convertBase64(image);
 
     const formData = new FormData();
-    formData.append("my_file", base64);
+    formData.append("my_file", image);
     formData.append("title", title);
     formData.append("description", description);
-    console.log(base64);
 
     axios({
       method: "POST",
