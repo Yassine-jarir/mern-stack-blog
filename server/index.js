@@ -16,11 +16,7 @@ app.use((req, res, next) => {
     "http://localhost:3000",
   ];
   const origin = req.headers.origin;
-
-  // If the request is from Cloudinary, allow all origins
-  if (req.headers["user-agent"].includes("Cloudinary")) {
-    res.header("Access-Control-Allow-Origin", "*");
-  } else if (allowedOrigins.includes(origin)) {
+  if (allowedOrigins.includes(origin)) {
     // If the request is from an allowed origin, set the specific origin
     res.header("Access-Control-Allow-Origin", origin);
   }

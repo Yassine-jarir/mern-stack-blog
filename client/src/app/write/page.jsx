@@ -80,6 +80,7 @@ function Write() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log(downloadURL);
             setmedia(downloadURL);
           });
         }
