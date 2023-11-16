@@ -8,11 +8,21 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { app } from "@/utils/firebase";
+const storage = getStorage(app);
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 function Write() {
   const [description, setdescription] = useState("");
   const [title, settitle] = useState("");
-  const [image, setimage] = useState();
+  const [file, setfile] = useState();
+  const [media, setmedia] = useState("");
   const [err, seterr] = useState("");
   const { user } = useContext(UserContext);
   const router = useRouter();
@@ -45,14 +55,48 @@ function Write() {
     "image",
   ];
 
+  useEffect(() => {
+    const upload = () => {
+      const storageRef = ref(storage, file);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setmedia(downloadURL);
+          });
+        }
+      );
+    };
+
+    file && upload();
+  }, [file]);
+
   const handlesubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("my_file", image);
+    formData.append("image", media);
     formData.append("title", title);
     formData.append("description", description);
-
+    console.log(formData);
     axios({
       method: "POST",
       url: "https://mern-stack-blog-topaz.vercel.app/blog/write",
@@ -91,7 +135,7 @@ function Write() {
 
       <input
         type="file"
-        onChange={(e) => setimage(e.target.files[0])}
+        onChange={(e) => setfile(e.target.files[0])}
         className={styles.input}
         required
       />
