@@ -1,6 +1,6 @@
  <h3>BLOG</h3> 
 MERN Stack Blog: A Modern Web Application for Content Creation and Sharing. </br>
- 👉 Live Demo :[EVOGYM](https://mern-stack-blog-frontend.vercel.app/)
+ 👉 Live Demo :[BLOG](https://mern-stack-blog-frontend.vercel.app/)
   
  <h2>Build with:</h2> 
 » Nextjs</br>
