@@ -119,7 +119,7 @@ function Write() {
 
           theme: "colored",
         });
-        // router.push("/");
+        router.push("/");
       })
       .catch((err) => {
         console.log(err);
