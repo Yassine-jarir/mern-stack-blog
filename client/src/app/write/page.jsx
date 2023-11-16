@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 function Write() {
   const [description, setdescription] = useState("");
   const [title, settitle] = useState("");
@@ -15,7 +16,6 @@ function Write() {
   const [err, seterr] = useState("");
   const { user } = useContext(UserContext);
   const router = useRouter();
-  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
   var modules = {
     toolbar: [
