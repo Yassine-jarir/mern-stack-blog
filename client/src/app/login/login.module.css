@@ -12,7 +12,7 @@
 }
 
 .loginblock {
-  width: 420px;
+  max-width: 420px;
   padding: 30px;
   background: #fff;
   border-radius: 5px;

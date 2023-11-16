@@ -14,18 +14,14 @@ function NavBar() {
   const { user } = useContext(UserContext);
   return (
     <div className={styles.container}>
-      <div className={styles.social}>
-        <Image src={fb} alt="facebook" width={24} height={24} />
-        <Image src={youtube} alt="youtube" width={24} height={24} />
-        <Image src={instagram} alt="tiktok" width={24} height={24} />
-      </div>
-      <div>
+      <div className={styles.titlelink}>
         <Link href="/" className={`${styles.logo} px-2`}>
-          {" "}
-          BLOG
+          <span className={styles.b}>B</span>
+          <span>log</span>
+          <span className={styles.fy}>.fy</span>
         </Link>
-        {user?.user.username && <strong> ({user?.user.username})</strong>}
       </div>
+      {user?.user.username && <strong> ({user?.user.username})</strong>}
       <div className={styles.links}>
         <ThemeToggle />
         <div className={styles.hiddenLinks}>
