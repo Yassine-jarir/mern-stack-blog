@@ -85,7 +85,7 @@ function Write() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log(downloadURL);
+            console.log("downloadURL", downloadURL);
             setmedia(downloadURL);
           });
         }
@@ -97,7 +97,7 @@ function Write() {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
-
+    console.log("media", media);
     axios({
       method: "POST",
       url: "https://mern-stack-blog-topaz.vercel.app/blog/write",
@@ -119,7 +119,7 @@ function Write() {
 
           theme: "colored",
         });
-        router.push("/");
+        // router.push("/");
       })
       .catch((err) => {
         console.log(err);
