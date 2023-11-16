@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./write.module.css";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
@@ -21,7 +21,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 function Write() {
   const [description, setdescription] = useState("");
   const [title, settitle] = useState("");
-  const [file, setfile] = useState();
+  const [file, setfile] = useState(null);
   const [media, setmedia] = useState("");
   const [err, seterr] = useState("");
   const { user } = useContext(UserContext);
@@ -57,9 +57,10 @@ function Write() {
 
   useEffect(() => {
     const upload = () => {
+      const name = new Date().getTime + file.name;
       const storageRef = ref(storage, file);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
+      const uploadTask = uploadBytesResumable(storageRef, name);
       uploadTask.on(
         "state_changed",
         (snapshot) => {
