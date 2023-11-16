@@ -15,6 +15,7 @@ function page() {
   const router = useRouter();
   const [singleblog, setblog] = useState();
   const [err, seterr] = useState("");
+
   useEffect(() => {
     axios({
       method: "GET",
@@ -54,8 +55,9 @@ function page() {
   };
 
   const handledelete = () => {
+    console.log(blog._id);
     axios({
-      url: `https://mern-stack-blog-topaz.vercel.app/blog/blog/${blog._id}`,
+      url: `https://mern-stack-blog-topaz.vercel.app/blog/blog/${blog}`,
       method: "DELETE",
       headers: { Authorization: `Bearer ${user?.token}` },
     })

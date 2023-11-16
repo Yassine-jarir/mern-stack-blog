@@ -4,14 +4,17 @@ import React, { useContext, useState } from "react";
 import styles from "./authLinks.module.css";
 import { ThemeContext } from "@/context/ThemeContext";
 import { UserContext } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 function AuthLinks() {
   const [toggle, settoggle] = useState(false);
   const { theme } = useContext(ThemeContext);
   const { user, dispatch } = useContext(UserContext);
+  const router = useRouter();
   const handlelogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("userToken");
+    router.push("/");
   };
 
   return (
