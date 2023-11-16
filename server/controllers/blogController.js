@@ -28,7 +28,9 @@ const newBlog = async (req, res) => {
     }
 
     const { title, description } = req.body;
-
+    const user = await userModel.findById(req.user._id);
+    console.log("user", user);
+    const author = user.username;
     try {
       if (!req.file) {
         throw new Error("File not received");
