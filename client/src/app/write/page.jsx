@@ -15,7 +15,11 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-const storage = getStorage(app);
+
+let storage;
+if (typeof window !== "undefined") {
+  storage = getStorage(app);
+}
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 function Write() {
