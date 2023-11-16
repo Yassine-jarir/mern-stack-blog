@@ -44,27 +44,13 @@ function Write() {
     "link",
     "image",
   ];
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   const handlesubmit = async (e) => {
     e.preventDefault();
     const base64 = await convertBase64(image);
 
     const formData = new FormData();
-    formData.append("file", base64);
+    formData.append("my_file", base64);
     formData.append("title", title);
     formData.append("description", description);
     console.log(base64);

@@ -1,30 +1,78 @@
+require("dotenv").config();
 const blogModel = require("../models/blogModel");
 const userModel = require("../models/userModel.js");
-const cloudinary = require("../utils/cloudinary.js");
-const cloudinaryUploadImage = require("../utils/cloudinary.js");
+const Multer = require("multer");
+const cloudinary = require("cloudinary").v2;
 
-// upload image
-newBlog = async (req, res) => {
-  const { title, description, image } = req.body;
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
-  try {
-    const result = await cloudinaryUploadImage(image);
-    console.log(result);
-    const user = await userModel.findById(req.user._id);
-    const author = user.username;
-    console.log("aauthor", author);
-    const blog = await blogModel.create({
-      title,
-      image: result,
-      description,
-      author,
-    });
-    return res.status(200).json(blog);
-  } catch (error) {
-    console.error(error);
-    return res.status(400).json({ error: error });
-  }
+async function handleUpload(file) {
+  const res = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+  });
+  return res;
+}
+const storage = new Multer.memoryStorage();
+const upload = Multer({
+  storage,
+});
+
+const newBlog = async (req, res) => {
+  upload.single("my_file")(req, res, async (err) => {
+    if (err) {
+      return res.status(400).json({ error: err.message });
+    }
+
+    const { title, description } = req.body;
+
+    try {
+      if (!req.file) {
+        throw new Error("File not received");
+      }
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const cldRes = await handleUpload(dataURI);
+      res.json(cldRes);
+      const blog = await blogModel.create({
+        title,
+        image: cldRes, // or adjust accordingly based on Cloudinary response
+        description,
+        author,
+      });
+
+      return res.status(200).json(blog);
+    } catch (error) {
+      console.error(error);
+      return res.status(400).json({ error: error.message });
+    }
+  });
 };
+// upload image
+// newBlog = async (req, res) => {
+//   const { title, description, image } = req.body;
+
+//   try {
+//     const result = await cloudinaryUploadImage(image);
+//     console.log(result);
+//     const user = await userModel.findById(req.user._id);
+//     const author = user.username;
+//     console.log("aauthor", author);
+//     const blog = await blogModel.create({
+//       title,
+//       image: result,
+//       description,
+//       author,
+//     });
+//     return res.status(200).json(blog);
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(400).json({ error: error });
+//   }
+// };
 
 // allblogs
 const allblogs = async (req, res) => {
